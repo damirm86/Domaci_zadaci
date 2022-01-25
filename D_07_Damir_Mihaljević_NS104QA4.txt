@@ -1,0 +1,122 @@
+import java.util.Locale;
+import java.util.Scanner;
+
+public class DomaciMetode {
+    static final int ASCII_SIZE = 256;
+
+    public static void main(String[] args) {
+
+        int[][] array2d_1 = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
+
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Unesite recenicu: ");
+        String recenica = scan.nextLine();
+
+        System.out.println("------------- Zadatak 1 -------------");
+        System.out.println("Broj reci u recenici je: " + brojReci(recenica));
+
+        System.out.println("------------- Zadatak 2 --------------");
+        System.out.println("Unesite slovo: ");
+        char c= scan.next().toLowerCase().charAt(0);
+
+
+        int x = brojPonavljanja(recenica,c);
+        System.out.println("Broj ponavljanja slova " + c + " u recenici je: " + x);
+
+
+        System.out.println("------------- Zadatak 3 --------------");
+        System.out.println("Slovo koje se pojavljuje najvise puta u recenici je: " +maxSlovo(recenica));
+
+        System.out.println("-------------- Zadatak 4 --------------");
+        printOutArray(array2d_1);
+        System.out.println();
+        rotiranaMatrica(array2d_1);
+
+
+    }
+
+    /**  ------- Zadatak 2 -------
+     * Metoda broji koliko puta se slovo koje je korisnik uneo pojavljuje u stringu (recenici)
+     * @param recenica  : recenica koju korisnik unosi
+     * @param c : slovo koje korisnik unosi
+     * @return : vraca broj ponavljanja odredjenog slova (koje je korisnik izabrao) u recenici (koju je korisnik uneo)
+     */
+
+    public static int brojPonavljanja(String recenica, char c) {
+        int ponavljanje = 0;
+        char temp;
+        for (int i = 0; i<recenica.length();i++) {
+            temp=recenica.toLowerCase().charAt(i);
+            if(temp==c) ponavljanje ++;
+        }
+        return ponavljanje;
+    }
+
+    /** --------- Zadatak 1 (varijanta kada korisnik unosi recenicu----------------
+     * Metoda broji koliko reci se nalazi u recenici koju je korisnik uneo
+     * @param recenica : recenica koju korisnik unosi
+     * @return : vraca duzinu niza tj broj reci
+     */
+
+    public static int brojReci (String recenica){
+        String[] nizReci = recenica.split(" ");
+        return nizReci.length;
+    }
+
+    /**   --------- Zadatak 3 ---------------
+     * Metoda vraca slovo koje se pojavljuje najvise puta u stringu koji unosi korisnik
+     * @param recenica : string (recenica) koju unosi korisnik
+     * @return : vraca slovo koje se ponavlja najvise puta u recenici
+     */
+
+    public static char maxSlovo(String recenica) {
+        int brojac[] = new int[ASCII_SIZE];
+        String nova= recenica.toLowerCase();
+        for (int i=0; i<nova.length(); i++)
+            brojac[nova.charAt(i)]++;
+        int maxBroj = 0;
+        char slovo= ' ';
+        for (int i = 0; i < nova.length(); i++) {
+            if (maxBroj < brojac[nova.charAt(i)]) {
+                maxBroj = brojac[nova.charAt(i)];
+                slovo = nova.charAt(i);
+            }
+        }
+        return slovo;
+    }
+
+    /** Stampa izvorne matrice
+     * Metoda stampa matricu
+     * @param array dvodimenzinalni niz
+     */
+
+    public static void printOutArray(int[][] array) {
+        int brojRedova = array.length;
+        for (int i = 0; i < brojRedova; i++) {
+            int brojKolona = array[i].length;
+            for (int j = 0; j < brojKolona; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    /**   ------ Zadatak 4 -------------
+     *Metoda stampa rotiranu matricu za 90%
+     * @param array dvodimenzionalni niz
+     */
+
+    public static void rotiranaMatrica(int[][] array) {
+        int brojRedova = array.length + 1;
+        for (int i = 0; i < brojRedova; i++) {
+            for (int j = 0; j < array.length; j++) {
+                System.out.print(array[j][i] + " ");
+            }
+            System.out.println();
+
+
+        }
+
+    }
+
+}

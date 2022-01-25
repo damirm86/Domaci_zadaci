@@ -1,0 +1,73 @@
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Igrica {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Izaberi X ili O: ");
+        String mojIzbor = input.next().toUpperCase(Locale.ROOT);
+        String masinaIzbor;
+        String[] tabela = new String[9];
+
+        if (mojIzbor.equals("X")) {
+            masinaIzbor = "O";
+        } else if (mojIzbor.equals("O")) {
+            masinaIzbor = "X";
+        } else {
+            System.out.println("Niste izabrali X ili O!!!");
+            return;
+        }
+        stampaTabele(tabela);
+        mojPotez(mojIzbor, tabela);
+        while (!Provera(tabela)) {
+            masinaPotez(masinaIzbor, tabela);
+            stampaTabele(tabela);
+            mojPotez(mojIzbor, tabela);
+        }
+        stampaTabele(tabela);
+        System.out.print("----------Igra je gotova!---------------");
+
+
+    }
+
+    public static void stampaTabele(String[] tabela) {
+        for (int i = 0; i < tabela.length; i++) {
+            System.out.print(tabela[i]);
+            System.out.print(" ");
+            if (i == 2 || i == 5 || i == 8) {
+                System.out.println();
+            }
+        }
+    }
+
+    public static void masinaPotez(String upis, String[] tabela) {
+        int pozicijaMasine = (int) (Math.random()*9);
+        while (tabela[pozicijaMasine] != null) {
+            pozicijaMasine = (int) (Math.random()*9);
+        }
+        tabela[pozicijaMasine] = upis;
+    }
+
+    public static void mojPotez(String upis, String[] tabela) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Unesite poziciju od 0 do 8: ");
+        int pozicija = input.nextInt();
+        while(tabela[pozicija] != null) {
+            System.out.print("Pozicija je zauzeta! Unesite drugu poziciju od 0 do 8: ");
+            pozicija= input.nextInt();
+            continue;
+        }
+            tabela[pozicija] = upis;
+    }
+    public static boolean Provera(String[] tabela) {
+
+        for (int i = 0; i < tabela.length; i++) {
+            if (tabela[i] == null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+}

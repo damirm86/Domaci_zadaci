@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class KlasaOcene {
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Unesite ocenu za kvalitet: ");
+        int kvalitet = scan.nextInt();
+        System.out.print("Unesite ocenu za uslugu: ");
+        int usluga = scan.nextInt();
+        double prosek=((double)kvalitet+usluga)/2;
+
+        if ((kvalitet<1 || kvalitet>10) || (usluga<1 || usluga>10)) {
+            System.out.println("Podaci nisu validni! Kvalitet i usluga moraju imati ocene u rasponu 1-10 !");
+            System.exit(1); // ova komanda gasi program
+        }
+
+        if(prosek>5){
+            System.out.println("Prosek je veci od 5!");
+        }else if(prosek<5 && kvalitet==1){
+            System.out.println("Treba popraviti kvalitet!");
+        }else if(prosek<5 && usluga==1){
+            System.out.println("Treba popraviti uslugu!");
+        }else if(prosek==5) {
+            System.out.println("Prosek je okruglo 5 :)");
+        }else{
+            System.out.println("Prosek je manji od 5!");
+        }
+
+
+
+    }
+
+}

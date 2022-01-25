@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class KlasaMesec {
+    public static void main(String args[]) {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Unesi mesec u godini: ");
+        String mesec = scan.nextLine();
+
+        switch (mesec.toLowerCase()) {
+            case "januar":
+            case "mart":
+            case "maj":
+            case "jul":
+            case "avgust":
+            case "oktobar":
+            case "decembar":
+                System.out.println("Mesec ima 31 dan.");
+                break;
+            case "april":
+            case "jun":
+            case "septembar":
+            case "novembar":
+                System.out.println("Mesec ima 30 dana!");
+                break;
+            case "februar":
+                System.out.println("Mesec ima 28 dana!");
+                break;
+            default:
+                System.out.println("Pogresan unos! Nepostojeci mesec!");
+
+
+        }
+    }
+}

@@ -1,0 +1,104 @@
+// ------------------- Zadatak 1--------------------------
+
+import java.util.Scanner;
+
+public class Zadatak1 {
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+        while (true) {
+            System.out.println("Unesite neki broj veci od 1: ");
+            int n = scan.nextInt();
+            if (n < 2) {
+                System.out.println("Morate uneti broj veci od 1!");
+                continue;
+            }
+            int sum = 0;
+            for (int i = 1; i <= n; i++) {
+                if (i % 2 == 0)
+                    sum = sum + i;
+            }
+            System.out.println("Suma parnih brojeva od 1 do " + n + " je = " + sum);
+            break;
+        }
+    }
+}
+
+
+
+// ---------------------- Zadatak 2 ---------------------------
+
+
+import java.util.Scanner;
+
+public class Zadatak2 {
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Unesite broj n :");
+        int n= scan.nextInt();
+        for(int i=0; i<n; i++) {
+            for(int j=2*(n-i); j>=0; j--) {
+                System.out.print(" ");
+            }
+            for(int j=0; j<=i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+// ---------------------- Zadatak 3 ---------------------------
+
+import java.util.Arrays;
+
+public class ObrnutiNiz {
+    public static void main(String[] args) {
+        int[] niz1 = {1, 2, 3, 4, 5};
+        int[] niz2 = new int[5];
+        for (int i = niz1.length;i>0 ; i--) {
+            for (int j = 0; j <i; j++) {
+                niz2[j]++;
+            }
+        }
+        System.out.println(Arrays.toString(niz2));
+    }
+}
+
+
+
+// ---------------------- Zadatak 4 ---------------------------
+
+import java.util.Scanner;
+
+public class Zadatak4 {
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Unesite ceo broj:");
+        int x = scan.nextInt();
+        int[] niz1 = {5,2,4,7,9,7};
+        int ponavljanje = 0;
+
+        for(int i=0; i<niz1.length; i++){
+            if(niz1[i]==x){
+                ponavljanje++;
+            }
+        }
+        if(ponavljanje>0){
+            System.out.println("Nadjen!");
+            System.out.println("Broj se u nizu nalazi " + ponavljanje + " put(a).");
+        }else{
+            System.out.println("Ovaj broj ne postoji u nizu!");
+        }
+
+    }
+}
+
+
+
+
